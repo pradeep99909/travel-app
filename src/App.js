@@ -1,13 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Login from './component/login/login'
+import Header from './component/header/header'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+const customHistory = require('history').createHistory;
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends React.Component {
+  render(){
+    return (
+      <Router history={customHistory} >
+        <div className="App">
+          <Header />
+          <Switch>
+          <Route path="/login" component={Login} exact/>
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
