@@ -1,33 +1,112 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+#root,.App {
+  height:100%;
+  width:100%;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  position: absolute;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.header{
+  top:0;
+  left:0;
+  right:0;
+  width:calc(100%-30px);
+  background:transparent;
+  height:60px;
+  position: absolute;
+  padding-left:30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header h2{
+  font-family: 'Lobster', cursive;
+  font-size: 32px;
+  color:white;
+}
+
+.login-page{
+  display: flex;
+  flex-direction: row;
+  height:100%;
+  width:100%;
+}
+
+.login-page .slider{
+  width:60%;
+  height:100%;
+}
+
+.login-page .login-main{
+  width:40%;
+  height:100%;
+  background-color: black;
+  color: white;
+  padding-left:130px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.login-main h3{
+  text-align: left;
+  width:100%;
+  font-size: 24px;
+  font-family: sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-main form .input-group{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width:300px;
 }
+
+
+.input-group label{
+  font-family: sans-serif;
+}
+
+.input-group input{
+  background: none;
+  color:white;
+  border:1px solid white;
+  height:30px;
+  
+}
+.input-group input[type="checkbox"]{
+  height:20px;
+  width:20px;
+  border:1px solid white;
+  background: none;
+}
+.input-group button{
+  height:40px;
+  width:150px;
+  color:white;
+  background-color: black;
+  border:1px solid white;
+  font-family: sans-serif;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.input-group button:hover{
+  color:rgb(0, 0, 0);
+  background-color:white;
+}
+
+.slider img{
+  width:100%;
+  height:100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin:none;
+  padding: none;
+  border:none;
+}
+
+
