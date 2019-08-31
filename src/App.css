@@ -57,7 +57,7 @@
   font-family: sans-serif;
 }
 
-.login-main form .input-group{
+.login-main form .form-group{
   display: flex;
   flex-direction: column;
   margin-top: 10px;
@@ -69,11 +69,12 @@
   font-family: sans-serif;
 }
 
-.input-group input{
-  background: none;
+.form-group input{
+  background: black;
   color:white;
   border:1px solid white;
   height:30px;
+  outline: none;
   
 }
 .input-group input[type="checkbox"]{
@@ -91,6 +92,7 @@
   font-family: sans-serif;
   transition: all 0.3s ease-in;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .input-group button:hover{
@@ -108,5 +110,38 @@
   padding: none;
   border:none;
 }
+
+.social{
+  height: 40px;
+  width: 210px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.social .fa{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+
+}
+
+@media only screen and (max-width: 420px){
+  .header{
+    height:40px;
+    font-size: 24px;
+  }
+  .slider{
+    display: none;
+  }
+  .login-page .login-main{
+    width: 100%;
+    padding-left:30px;
+  }
+} 
 
 
