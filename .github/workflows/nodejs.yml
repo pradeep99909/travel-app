@@ -22,6 +22,7 @@ jobs:
         npm install
         npm run build
         npm install now
+        now login
         now
       env:
         CI: true
