@@ -22,7 +22,7 @@ jobs:
         npm install
         npm run build
         npm install now
-        now login
+        now login pradeep99909@gmail.com
         now
       env:
         CI: true
