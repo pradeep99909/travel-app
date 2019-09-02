@@ -82,7 +82,7 @@ class Login extends React.Component{
             <div className="login-page">
                 <Slider />
                 <Switch>
-                    <Route path="/login" component={LoginMain} exact/> 
+                    <Route path="/login" component={LoginMain} exact/>
                 </Switch>
             </div>
 
