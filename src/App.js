@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import Login from './component/login/login'
+import Loading from './component/login/login'
 import Header from './component/header/header'
+
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 const customHistory = require('history').createHistory;
 
@@ -12,7 +13,7 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <Switch>
-          <Route path="/login" component={Login} exact/>
+              <Route path="/login" component={Loading} exact/>
           </Switch>
         </div>
       </Router>

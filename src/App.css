@@ -130,6 +130,22 @@
 
 }
 
+.loading{
+  height:100%;
+  width:100%;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  position: absolute;
+  z-index: 2;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 420px){
   .header{
     height:40px;

@@ -1,6 +1,8 @@
 import React from 'react'
 import Slider from '../slider/slider'
 import { Link } from 'react-router-dom'
+import firebase from "../../config/firebase"
+import { Suspense, lazy } from 'react';
 
 import SocialLogin from '../social/sociallogin'
 
@@ -16,6 +18,7 @@ class LoginForm extends React.Component{
 
     login=(e)=>{
         e.preventDefault()
+        //if()
     }
 
     handlechange=(e)=>{
@@ -38,12 +41,12 @@ class LoginForm extends React.Component{
         return(
             <form>
                 <span class="form-group has-float-label">
-                    <input class="form-control" id="email" type="email" />
                     <label for="email">Email</label>
+                    <input class="form-control" id="email" type="email" name="email" />
                 </span>
                 <span class="form-group has-float-label">
-                    <input class="form-control" id="password" type="password" />
-                    <label for="email">Password</label>
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" type="password" name="password" />
                 </span>
                 <div className="input-group" style={{fontSize:'14px',flexDirection:'row',alignItems:'center'}}>
                     <input onChange={this.check} type='checkbox' name='check' />
@@ -84,4 +87,15 @@ class Login extends React.Component{
     }
 }
 
-export default Login
+class Loading extends React.Component{
+    render(){
+        return(
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Login />
+                </Suspense>
+
+        );
+    }
+}
+
+export default Loading
