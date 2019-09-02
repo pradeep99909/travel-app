@@ -1,10 +1,11 @@
 import React from 'react'
 import Slider from '../slider/slider'
-import { Link } from 'react-router-dom'
+import { Link , Route, Switch} from 'react-router-dom'
 import firebase from "../../config/firebase"
 import { Suspense, lazy } from 'react';
 
 import SocialLogin from '../social/sociallogin'
+import RegisterMain from '../register/register'
 
 class LoginForm extends React.Component{
     constructor(){
@@ -80,22 +81,13 @@ class Login extends React.Component{
         return(
             <div className="login-page">
                 <Slider />
-                <LoginMain />
+                <Switch>
+                    <Route path="/login" component={LoginMain} exact/> 
+                </Switch>
             </div>
 
         );
     }
 }
 
-class Loading extends React.Component{
-    render(){
-        return(
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Login />
-                </Suspense>
-
-        );
-    }
-}
-
-export default Loading
+export default Login

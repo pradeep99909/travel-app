@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
-import Loading from './component/login/login'
+import Login from './component/login/login'
 import Header from './component/header/header'
+import Register from './component/register/register'
+
 
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 const customHistory = require('history').createHistory;
@@ -12,9 +14,8 @@ class App extends React.Component {
       <Router history={customHistory} >
         <div className="App">
           <Header />
-          <Switch>
-              <Route path="/login" component={Loading} exact/>
-          </Switch>
+          <Route path="/register" component={Login} exact/>
+          <Route path="/login" component={Login} exact/>
         </div>
       </Router>
     );
