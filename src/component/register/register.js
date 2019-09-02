@@ -1,26 +1,23 @@
 import React from 'react'
-import Slider from '../slider/slider'
-import { Link , Switch, Route} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import firebase from "../../config/firebase"
-import { Suspense, lazy } from 'react';
-
-import RegisterMain from "../register/register"
 
 import SocialLogin from '../social/sociallogin'
 
-class LoginForm extends React.Component{
+class RegisterForm extends React.Component{
     constructor(){
         super()
         this.state={
+            name:"",
             email:"",
             password:"",
+            cpassword:'',
             check:null
         }
     }
 
-    login=(e)=>{
+    register=(e)=>{
         e.preventDefault()
-        //if()
     }
 
     handlechange=(e)=>{
@@ -43,12 +40,21 @@ class LoginForm extends React.Component{
         return(
             <form>
                 <span class="form-group has-float-label">
+                    <label for="name">Name</label>
+                    <input class="form-control" id="name" type="text" name="name" />
+                    <div class="form-control-feedback ">dsds</div>
+                </span>
+                <span class="form-group has-float-label">
                     <label for="email">Email</label>
                     <input class="form-control" id="email" type="email" name="email" />
                 </span>
                 <span class="form-group has-float-label">
                     <label for="password">Password</label>
                     <input class="form-control" id="password" type="password" name="password" />
+                </span>
+                <span class="form-group has-float-label">
+                    <label for="cpassword">Confirm Password</label>
+                    <input class="form-control" id="cpassword" type="password" name="cpassword" />
                 </span>
                 <div className="input-group" style={{fontSize:'14px',flexDirection:'row',alignItems:'center'}}>
                     <input onChange={this.check} type='checkbox' name='check' />
@@ -58,48 +64,26 @@ class LoginForm extends React.Component{
                     <Link style={{color:'white',fontFamily:'sans-serif',fontSize:'14px'}} to="/forgot-password">Forgot Password</Link>
                 </div>
                 <div className="input-group" style={{flexDirection:'row',alignItems:'center'}}>
-                    <button name='login' onClick={this.login}>Login</button>
+                    <button name='login' onClick={this.register}>Register</button>
                 </div>
             </form>
         )
     }
 }
 
-class LoginMain extends React.Component{
+class RegisterMain extends React.Component{
     render(){
         return(
             <div className="login-main">
-                <h3>Login</h3>
-                <LoginForm />
+                <h3>Registeration</h3>
+                <RegisterForm />
                 <SocialLogin />
             </div>
         )
     }
 }
 
-class Login extends React.Component{
-    render(){
-        return(
-            <div className="login-page">
-                <Slider />
-                <Switch>
-                    <Route path="/register" component={RegisterMain} exact/>
-                </Switch>
-            </div>
 
-        );
-    }
-}
 
-class Loading extends React.Component{
-    render(){
-        return(
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Login />
-                </Suspense>
 
-        );
-    }
-}
-
-export default Login
+export default RegisterMain

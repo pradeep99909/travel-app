@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Loading from './component/login/login'
+import Login from './component/login/login'
 import Header from './component/header/header'
 
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -13,7 +13,7 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <Switch>
-              <Route path="/login" component={Loading} exact/>
+              <Route path="/register" component={Login} exact/>
           </Switch>
         </div>
       </Router>
