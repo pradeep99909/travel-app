@@ -41,8 +41,8 @@ class RegisterForm extends React.Component{
             <form>
                 <span class="form-group has-float-label">
                     <label for="name">Name</label>
-                    <input class="form-control" id="name" type="text" name="name" />
-                    <div class="form-control-feedback ">dsds</div>
+                    <input class="form-control is-invalid" id="name" type="text" name="name" />
+                    <span class="invalid-feedback">Please correct the error</span>
                 </span>
                 <span class="form-group has-float-label">
                     <label for="email">Email</label>
