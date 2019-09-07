@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
-#root,.App {
+#root{
   height:100%;
   width:100%;
   top:0;
@@ -8,6 +8,14 @@
   right:0;
   position: absolute;
 }
+*{
+  margin:0;
+  padding: 0;
+}
+.App{
+  height:100%;
+  width:100%;
+}
 
 .header{
   top:0;
@@ -15,14 +23,16 @@
   right:0;
   width:calc(100%-30px);
   background:transparent;
-  height:60px;
+  height:70px;
   position: absolute;
   padding-left:30px;
+  display:flex;
+  align-items: center; 
 }
 
 .header h2{
   font-family: 'Lobster', cursive;
-  font-size: 32px;
+  font-size: 34px;
   color:white;
 }
 
@@ -36,6 +46,9 @@
 .login-page .slider{
   width:60%;
   height:100%;
+  background-image: url('../src/images/photo1.jpg');
+  background-repeat:no-repeat;
+  background-size: cover; 
 }
 
 .login-page .login-main{

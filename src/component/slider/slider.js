@@ -1,10 +1,10 @@
 import React from 'react';
-
+import photo from '../../images/photo1.jpg'
 class Slider extends React.Component{
     render(){
         return(
             <div className="slider">
-                <img alt="Nature" src="https://source.unsplash.com/1600x900/?india,nature,travel" />
+                {/*<img alt="Nature" src={photo} />*/}
             </div>
         )
     }

@@ -18,7 +18,21 @@ class RegisterForm extends React.Component{
 
     register=(e)=>{
         e.preventDefault()
-    }
+        if(this.state.email!="" || this.state.name!="" || this.state.password!="" || this.state.cpassword){
+                if(this.state.cpassword==this.state.password){
+                    firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then(
+                        (user)=>{
+                            firebase.database().ref().child('users').child(user.uid).set(
+                                {
+                                    'email':user.email,
+                                    'name':this.state.name
+                                }
+                            )
+                        }
+                    )
+                }
+            }
+        }
 
     handlechange=(e)=>{
         this.setState(
@@ -41,20 +55,23 @@ class RegisterForm extends React.Component{
             <form>
                 <span class="form-group has-float-label">
                     <label for="name">Name</label>
-                    <input class="form-control is-invalid" id="name" type="text" name="name" />
-                    <span class="invalid-feedback">Please correct the error</span>
+                    <input className="form-control is-invalid" id="name" type="text" name="name" />
+                    <span className="form-name-error">Please correct the error</span>
                 </span>
-                <span class="form-group has-float-label">
+                <span className="form-group has-float-label">
                     <label for="email">Email</label>
-                    <input class="form-control" id="email" type="email" name="email" />
+                    <input className="form-control" id="email" type="email" name="email" />
+                    <span className="form-name-error">Please correct the error</span>
                 </span>
-                <span class="form-group has-float-label">
+                <span className="form-group has-float-label">
                     <label for="password">Password</label>
-                    <input class="form-control" id="password" type="password" name="password" />
+                    <input className="form-control" id="password" type="password" name="password" />
+                    <span className="form-name-error">Please correct the error</span>
                 </span>
-                <span class="form-group has-float-label">
+                <span className="form-group has-float-label">
                     <label for="cpassword">Confirm Password</label>
-                    <input class="form-control" id="cpassword" type="password" name="cpassword" />
+                    <input className="form-control" id="cpassword" type="password" name="cpassword" />
+                    <span className="form-name-error">Please correct the error</span>
                 </span>
                 <div className="input-group" style={{fontSize:'14px',flexDirection:'row',alignItems:'center'}}>
                     <input onChange={this.check} type='checkbox' name='check' />
