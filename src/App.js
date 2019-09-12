@@ -2,14 +2,17 @@ import React from 'react';
 import './App.css';
 import Login from './component/login/login'
 import Header from './component/header/header'
+import { createBrowserHistory } from 'history';
 
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-const customHistory = require('history').createHistory;
+
+import { Router, Route, Switch } from 'react-router-dom'
+
+const his=createBrowserHistory()
 
 class App extends React.Component {
   render(){
     return (
-      <Router history={customHistory} >
+      <Router history={his} >
         <div className="App">
           <Header />
           <Switch>

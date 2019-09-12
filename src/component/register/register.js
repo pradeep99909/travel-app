@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import firebase from "../../config/firebase"
 
 import SocialLogin from '../social/sociallogin'
-
+const history = require('history').createHistory;
 class RegisterForm extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             name:"",
             email:"",
@@ -18,16 +18,24 @@ class RegisterForm extends React.Component{
 
     register=(e)=>{
         e.preventDefault()
+        //const h={this.props}
         if(this.state.email!="" || this.state.name!="" || this.state.password!="" || this.state.cpassword){
                 if(this.state.cpassword==this.state.password){
                     firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password).then(
-                        (user)=>{
-                            firebase.database().ref().child('users').child(user.uid).set(
+                        (cred)=>{
+                            firebase.database().ref().child('users').child(cred.user.uid).set(
                                 {
-                                    'email':user.email,
+                                    'email':cred.user.uid,
                                     'name':this.state.name
                                 }
-                            )
+                            ).then(()=>{
+                                console.log(this.props.history)
+                            })
+                            
+                        }
+                    ).catch(
+                        (error)=>{
+                            console.log(error.message)
                         }
                     )
                 }
@@ -40,6 +48,7 @@ class RegisterForm extends React.Component{
                 [e.target.name]:e.target.value
             }
         )
+        console.log(this.state)
     }
 
     check=(e)=>{
@@ -50,28 +59,38 @@ class RegisterForm extends React.Component{
         )
     }
 
+    noval=(e)=>{
+        if(e.target.value==""){
+            document.getElementById(e.target.name +"-error").innerHTML="Fill the Text"
+            //console.log(e.target.name)
+        }
+        else{
+            document.getElementById(e.target.name +"-error").innerHTML=""
+        }
+    }
+
     render(){
         return(
             <form>
                 <span class="form-group has-float-label">
                     <label for="name">Name</label>
-                    <input className="form-control is-invalid" id="name" type="text" name="name" />
-                    <span className="form-name-error">Please correct the error</span>
+                    <input className="form-control is-invalid" onBlur={this.noval} id="name" type="text" name="name" onKeyUp={this.handlechange} />
+                    <span className="form-name-error" id="name-error">Please correct the error</span>
                 </span>
                 <span className="form-group has-float-label">
                     <label for="email">Email</label>
-                    <input className="form-control" id="email" type="email" name="email" />
-                    <span className="form-name-error">Please correct the error</span>
+                    <input className="form-control" id="email" type="email" name="email" onKeyUp={this.handlechange} />
+                    <span className="form-email-error">Please correct the error</span>
                 </span>
                 <span className="form-group has-float-label">
                     <label for="password">Password</label>
-                    <input className="form-control" id="password" type="password" name="password" />
-                    <span className="form-name-error">Please correct the error</span>
+                    <input className="form-control" id="password" type="password" name="password" onKeyUp={this.handlechange} />
+                    <span className="form-pass-error">Please correct the error</span>
                 </span>
                 <span className="form-group has-float-label">
                     <label for="cpassword">Confirm Password</label>
-                    <input className="form-control" id="cpassword" type="password" name="cpassword" />
-                    <span className="form-name-error">Please correct the error</span>
+                    <input className="form-control" id="cpassword" type="password" name="cpassword" onKeyUp={this.handlechange} />
+                    <span className="form-cpass-error">Please correct the error</span>
                 </span>
                 <div className="input-group" style={{fontSize:'14px',flexDirection:'row',alignItems:'center'}}>
                     <input onChange={this.check} type='checkbox' name='check' />
