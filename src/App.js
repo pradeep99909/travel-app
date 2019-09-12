@@ -2,24 +2,21 @@ import React from 'react';
 import './App.css';
 import Login from './component/login/login'
 import Header from './component/header/header'
-import { createBrowserHistory } from 'history';
+import { Provider, Router, Route, Switch } from 'react-router-dom'
 
-
-import { Router, Route, Switch } from 'react-router-dom'
-
-const his=createBrowserHistory()
+import history from './history'
 
 class App extends React.Component {
   render(){
     return (
-      <Router history={his} >
-        <div className="App">
-          <Header />
-          <Switch>
-              <Route path="/register" component={Login} exact/>
-          </Switch>
-        </div>
-      </Router>
+        <Router history={history} >
+          <div className="App">
+            <Header />
+            <Switch>
+                <Route path="/register" component={Login} exact/>
+            </Switch>
+          </div>
+        </Router>
     );
   }
 }

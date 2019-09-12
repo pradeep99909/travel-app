@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link , withRouter } from 'react-router-dom'
 import firebase from "../../config/firebase"
 
 import SocialLogin from '../social/sociallogin'
-const history = require('history').createHistory;
+
+import history from '../../history'
+
 class RegisterForm extends React.Component{
     constructor(props){
         super(props)
@@ -29,7 +31,7 @@ class RegisterForm extends React.Component{
                                     'name':this.state.name
                                 }
                             ).then(()=>{
-                                console.log(this.props.history)
+                                history.push("/dashboard")
                             })
                             
                         }
@@ -40,6 +42,7 @@ class RegisterForm extends React.Component{
                     )
                 }
             }
+            //this.props.history.push('/login')
         }
 
     handlechange=(e)=>{
@@ -122,4 +125,4 @@ class RegisterMain extends React.Component{
 
 
 
-export default RegisterMain
+export default withRouter(RegisterMain)
